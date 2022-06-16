@@ -19,6 +19,7 @@ export const useFetch = (url) => {
       setLoading(true);
       const res = await fetch(url, options);
       const json = await res.json();
+      console.log(res.status);
       if (res.status === 422) {
         setInputErrors(parseInputErrors(json.detail));
         return;
@@ -26,6 +27,7 @@ export const useFetch = (url) => {
       if (res.status === 401 || res.status === 403) {
         localStorage.removeItem('identified_token');
         navigate('/auth/signin');
+        throw new Error(json.detail);
       }
       if (res.status >= 400) {
         throw new Error(json.detail);

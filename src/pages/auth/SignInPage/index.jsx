@@ -19,7 +19,7 @@ export const SignInPage = () => {
         <styled.Form onSubmit={view.handleSubmit} noValidate>
           {view.error && (
             <FormHelperText error sx={{ marginBottom: '1em' }}>
-              予期せぬエラーが発生しました
+              {view.error.message}
             </FormHelperText>
           )}
           <MyTextField
