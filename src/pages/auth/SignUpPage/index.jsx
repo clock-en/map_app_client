@@ -6,16 +6,14 @@ import { MyButton } from 'components/elements/MyButton';
 import * as hooks from './index.hooks';
 import * as styled from './index.styled';
 
-export const SignInPage = () => {
+export const SignUpPage = () => {
   const view = hooks.useView();
 
   return (
     <styled.PageRoot>
       <styled.Contents>
         <Typography sx={{ marginBottom: '0.5em' }} variant="h1">
-          おすすめの場所を
-          <br />
-          共有しよう
+          新規登録
         </Typography>
         <styled.Form onSubmit={view.handleSubmit} noValidate>
           {view.error && (
@@ -24,11 +22,18 @@ export const SignInPage = () => {
             </FormHelperText>
           )}
           <MyTextField
+            type="text"
+            label="ユーザー名"
+            value={view.nameInput}
+            onChange={view.handleChangeName}
+            error={view.inputErrors ? view.inputErrors.name : undefined}
+          />
+          <MyTextField
             type="email"
             label="メールアドレス"
-            value={view.usernameInput}
-            onChange={view.handleChangeUsername}
-            error={view.inputErrors ? view.inputErrors.username : undefined}
+            value={view.emailInput}
+            onChange={view.handleChangeEmail}
+            error={view.inputErrors ? view.inputErrors.email : undefined}
           />
           <MyTextField
             type="password"
@@ -38,14 +43,10 @@ export const SignInPage = () => {
             error={view.inputErrors ? view.inputErrors.password : undefined}
           />
           <Box sx={{ marginBottom: '1em' }}>
-            <MyButton
-              type="submit"
-              caption="サインイン"
-              loading={view.loading}
-            />
+            <MyButton type="submit" caption="新規登録" loading={view.loading} />
           </Box>
           <Box>
-            <Link to="/auth/signup">新規登録</Link>
+            <Link to="/auth/signin">アカウントお持ちの方</Link>
           </Box>
         </styled.Form>
       </styled.Contents>
