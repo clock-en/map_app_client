@@ -1,1 +1,2 @@
-export const isString = (value) => typeof value === 'string';
+export { useMutate } from './useMutate';
+export { useMutateInFormFormat } from './useMutateInFormFormat';

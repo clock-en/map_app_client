@@ -8,18 +8,24 @@ const parseInputErrors = (errorResData) =>
   }, {});
 
 export const useFetch = (url) => {
-  const [data, setSetData] = useState(null);
+  const [data, setData] = useState(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const [inputErrors, setInputErrors] = useState(null);
   const navigate = useNavigate();
 
+  const initState = () => {
+    setData(null);
+    setError(null);
+    setInputErrors(null);
+  };
+
   const doFetch = async (options) => {
     try {
+      initState();
       setLoading(true);
       const res = await fetch(url, options);
       const json = await res.json();
-      console.log(res.status);
       if (res.status === 422) {
         setInputErrors(parseInputErrors(json.detail));
         return;
@@ -32,7 +38,7 @@ export const useFetch = (url) => {
       if (res.status >= 400) {
         throw new Error(json.detail);
       }
-      setSetData(json);
+      setData(json);
     } catch (err) {
       setError(err);
     } finally {

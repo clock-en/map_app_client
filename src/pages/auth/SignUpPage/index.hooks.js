@@ -1,17 +1,22 @@
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { useMutateInFormFormat } from 'hooks/fetch';
+import { useMutate } from 'hooks/fetch';
 
 export const useView = () => {
-  const [usernameInput, setUsernameInput] = useState('');
+  const [nameInput, setNameInput] = useState('');
+  const [emailInput, setEmailInput] = useState('');
   const [passwordInput, setPasswordInput] = useState('');
   const navigate = useNavigate();
-  const { data, loading, error, inputErrors, mutate } = useMutateInFormFormat(
-    'http://localhost:8000/api/auth/login'
+  const { data, loading, error, inputErrors, mutate } = useMutate(
+    'http://localhost:8000/api/users'
   );
 
-  const handleChangeUsername = (e) => {
-    setUsernameInput(e.target.value);
+  const handleChangeName = (e) => {
+    setNameInput(e.target.value);
+  };
+
+  const handleChangeEmail = (e) => {
+    setEmailInput(e.target.value);
   };
 
   const handleChangePassword = (e) => {
@@ -21,7 +26,8 @@ export const useView = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     mutate({
-      username: usernameInput,
+      name: nameInput,
+      email: emailInput,
       password: passwordInput,
     });
   };
@@ -29,18 +35,19 @@ export const useView = () => {
   // ログイン成功時の処理
   useEffect(() => {
     if (data) {
-      localStorage.setItem('identified_token', data.token);
-      navigate('/app');
+      navigate('/auth/signin');
     }
   }, [data]);
 
   return {
-    usernameInput,
+    nameInput,
+    emailInput,
     passwordInput,
     loading,
     error,
     inputErrors,
-    handleChangeUsername,
+    handleChangeName,
+    handleChangeEmail,
     handleChangePassword,
     handleSubmit,
   };
