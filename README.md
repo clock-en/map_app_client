@@ -2,6 +2,12 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+## 起動前の初期設定 (Git Clone 後にまずやること)
+
+1. `/.env.example` を複製して `/.env.development` と `/.env` の 2 ファイルを作成する (※ リネームではなく必ず複製してください)
+2. 作成した `/.env.development` の `REACT_APP_API_ENDPOINT` 変数の値に `http://localhost:8000` を設定してください
+3. 作成した `/.env` の `REACT_APP_API_ENDPOINT` 変数の値に本番環境のエンドポイントの BASE URL を設定してください
+
 ## Available Scripts
 
 In the project directory, you can run:

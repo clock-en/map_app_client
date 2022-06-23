@@ -7,9 +7,7 @@ export const useView = () => {
   const [emailInput, setEmailInput] = useState('');
   const [passwordInput, setPasswordInput] = useState('');
   const navigate = useNavigate();
-  const { data, loading, error, inputErrors, mutate } = useMutate(
-    'http://localhost:8000/api/users'
-  );
+  const { data, loading, error, inputErrors, mutate } = useMutate('/users');
 
   const handleChangeName = (e) => {
     setNameInput(e.target.value);
