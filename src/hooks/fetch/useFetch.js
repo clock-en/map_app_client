@@ -7,7 +7,7 @@ const parseInputErrors = (errorResData) =>
     return acc;
   }, {});
 
-export const useFetch = (url) => {
+export const useFetch = (resourcePath) => {
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
@@ -24,6 +24,7 @@ export const useFetch = (url) => {
     try {
       initState();
       setLoading(true);
+      const url = `${process.env.REACT_APP_API_ENDPOINT}/api${resourcePath}`;
       const res = await fetch(url, options);
       const json = await res.json();
       if (res.status === 422) {

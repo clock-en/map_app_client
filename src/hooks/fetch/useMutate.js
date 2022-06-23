@@ -1,7 +1,7 @@
 import { useFetch } from './useFetch';
 
-export const useMutate = (url) => {
-  const { doFetch, ...rest } = useFetch(url);
+export const useMutate = (resourcePath) => {
+  const { doFetch, ...rest } = useFetch(resourcePath);
 
   const mutate = (body) => {
     doFetch({

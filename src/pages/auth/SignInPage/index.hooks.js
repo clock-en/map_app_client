@@ -6,9 +6,8 @@ export const useView = () => {
   const [usernameInput, setUsernameInput] = useState('');
   const [passwordInput, setPasswordInput] = useState('');
   const navigate = useNavigate();
-  const { data, loading, error, inputErrors, mutate } = useMutateInFormFormat(
-    'http://localhost:8000/api/auth/login'
-  );
+  const { data, loading, error, inputErrors, mutate } =
+    useMutateInFormFormat('/auth/login');
 
   const handleChangeUsername = (e) => {
     setUsernameInput(e.target.value);

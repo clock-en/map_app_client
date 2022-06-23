@@ -1,7 +1,7 @@
 import { useFetch } from './useFetch';
 
-export const useMutateInFormFormat = (url) => {
-  const { doFetch, ...rest } = useFetch(url);
+export const useMutateInFormFormat = (resourcePath) => {
+  const { doFetch, ...rest } = useFetch(resourcePath);
 
   const mutate = (body) => {
     const formData = new URLSearchParams();
