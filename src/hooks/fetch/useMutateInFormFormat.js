@@ -15,6 +15,7 @@ export const useMutateInFormFormat = (resourcePath) => {
       headers: {
         'Content-Type': 'application/x-www-form-urlencoded',
       },
+      credentials: 'include',
       body: formData,
     });
   };

@@ -1,24 +1,21 @@
 import React from 'react';
+import { PropTypes } from 'prop-types';
 import { Outlet } from 'react-router-dom';
-import styled from '@emotion/styled';
 import { Header } from './Header';
+import {
+  MyDefaultLayoutRoot,
+  MyDefaultLayoutChildrenRoot,
+} from './index.styled';
 
-const MyDefaultLayoutRoot = styled('div')(() => ({
-  display: 'flex',
-  flexDirection: 'column',
-  height: '100vh',
-  maxHeight: '100%',
-}));
-
-const MyDefaultLayoutChildrenRoot = styled('div')(() => ({
-  height: '100%',
-}));
-
-export const MyDefaultLayout = () => (
+export const MyDefaultLayout = ({ onClickSignOut }) => (
   <MyDefaultLayoutRoot>
-    <Header />
+    <Header onClickSignOut={onClickSignOut} />
     <MyDefaultLayoutChildrenRoot>
       <Outlet />
     </MyDefaultLayoutChildrenRoot>
   </MyDefaultLayoutRoot>
 );
+
+MyDefaultLayout.propTypes = {
+  onClickSignOut: PropTypes.func.isRequired,
+};

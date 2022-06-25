@@ -9,6 +9,7 @@ export const useMutate = (resourcePath) => {
       headers: {
         'Content-Type': 'application/json',
       },
+      credentials: 'include',
       body: JSON.stringify(body),
     });
   };
