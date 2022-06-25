@@ -4,7 +4,7 @@ import { Wrapper } from '@googlemaps/react-wrapper';
 import { MyGoogleMapMarker } from './MyGoogleMapMarker';
 import { Map } from './index.styled';
 
-export const MyGoogleMap = ({ center, zoom, locations }) => {
+export const MyGoogleMap = ({ center, zoom, locations, onClickMarker }) => {
   const ref = useRef();
   const [map, setMap] = useState();
 
@@ -23,11 +23,13 @@ export const MyGoogleMap = ({ center, zoom, locations }) => {
     <Wrapper apiKey={process.env.REACT_APP_GOOGLE_MAPS_API_KEY}>
       <Map ref={ref}>
         {map &&
+          locations &&
           locations.map((location) => (
             <MyGoogleMapMarker
               map={map}
               location={location}
               key={location.id}
+              onClick={onClickMarker}
             />
           ))}
       </Map>
@@ -44,12 +46,16 @@ MyGoogleMap.propTypes = {
   locations: PropTypes.arrayOf(
     PropTypes.shape({
       id: PropTypes.number.isRequired,
+      name: PropTypes.string.isRequired,
       latitude: PropTypes.number.isRequired,
       longitude: PropTypes.number.isRequired,
+      user_id: PropTypes.number.isRequired,
     })
   ),
+  onClickMarker: PropTypes.func,
 };
 
 MyGoogleMap.defaultProps = {
   locations: [],
+  onClickMarker: undefined,
 };

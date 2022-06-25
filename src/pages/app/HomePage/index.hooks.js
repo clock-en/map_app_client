@@ -2,26 +2,13 @@ import { useState, useEffect } from 'react';
 import { useQuery } from 'hooks/fetch';
 
 export const useView = () => {
-  const { data, loading, error, query } = useQuery('/spots');
-  const [locations, setLocations] = useState([]);
+  const { data: locations, loading, error, query } = useQuery('/spots');
+  const [selectedLocation, setSelectedLocation] = useState();
 
   useEffect(() => {
     localStorage.getItem('identified_token');
     query();
   }, []);
-
-  useEffect(() => {
-    if (data) {
-      localStorage.setItem('identified_token', data.token);
-      setLocations(
-        data.map((record) => ({
-          id: record.id,
-          latitude: record.latitude,
-          longitude: record.longitude,
-        }))
-      );
-    }
-  }, [data]);
 
   useEffect(() => {
     if (error) {
@@ -30,8 +17,14 @@ export const useView = () => {
     }
   }, [error]);
 
+  const handleMarkerClick = (location) => {
+    setSelectedLocation(location);
+  };
+
   return {
     locations,
     loading,
+    selectedLocation,
+    handleMarkerClick,
   };
 };
