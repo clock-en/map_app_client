@@ -4,9 +4,7 @@ import { useMutate } from 'hooks/fetch';
 
 export const useView = () => {
   const navigate = useNavigate();
-  const { data, error, mutate } = useMutate(
-    'http://localhost:8000/api/auth/logout'
-  );
+  const { data, error, mutate } = useMutate('/auth/signout');
 
   const handleClickSignOut = () => {
     mutate();

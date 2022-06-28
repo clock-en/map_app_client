@@ -6,7 +6,6 @@ export const useView = () => {
   const [selectedLocation, setSelectedLocation] = useState();
 
   useEffect(() => {
-    localStorage.getItem('identified_token');
     query();
   }, []);
 

@@ -20,11 +20,12 @@ export const useFetch = (resourcePath) => {
     setInputErrors(null);
   };
 
-  const doFetch = async (options) => {
+  const doFetch = async (options, qureystring) => {
     try {
       initState();
       setLoading(true);
-      const url = `${process.env.REACT_APP_API_ENDPOINT}/api${resourcePath}`;
+      const urlParams = qureystring ? `?${qureystring}` : '';
+      const url = `${process.env.REACT_APP_API_ENDPOINT}/api${resourcePath}${urlParams}`;
       const res = await fetch(url, options);
       const json = await res.json();
       if (res.status === 422) {

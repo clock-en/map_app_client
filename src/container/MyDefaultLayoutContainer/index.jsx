@@ -1,8 +1,8 @@
 import React from 'react';
 import { MyDefaultLayout } from 'components/layouts/MyDefaultLayout';
-import { useView } from './index.hooks';
+import * as hooks from './index.hooks';
 
 export const MyDefaultLayoutContainer = () => {
-  const { handleClickSignOut } = useView();
+  const { handleClickSignOut } = hooks.useView();
   return <MyDefaultLayout onClickSignOut={handleClickSignOut} />;
 };

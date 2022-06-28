@@ -2,6 +2,7 @@ import React from 'react';
 import { RequireAuth } from 'core/route/RequireAuth';
 import { MyDefaultLayoutContainer } from 'container/MyDefaultLayoutContainer';
 import { HomePage } from 'pages/app/HomePage';
+import { MyPage } from 'pages/app/MyPage';
 
 export const privateRoutes = [
   {
@@ -11,6 +12,9 @@ export const privateRoutes = [
         <MyDefaultLayoutContainer />
       </RequireAuth>
     ),
-    children: [{ path: '', element: <HomePage /> }],
+    children: [
+      { path: '', element: <HomePage /> },
+      { path: 'mypage', element: <MyPage /> },
+    ],
   },
 ];

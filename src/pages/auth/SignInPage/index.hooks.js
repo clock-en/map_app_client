@@ -7,7 +7,7 @@ export const useView = () => {
   const [passwordInput, setPasswordInput] = useState('');
   const navigate = useNavigate();
   const { data, loading, error, inputErrors, mutate } =
-    useMutateInFormFormat('/auth/login');
+    useMutateInFormFormat('/auth/signin');
 
   const handleChangeUsername = (e) => {
     setUsernameInput(e.target.value);
