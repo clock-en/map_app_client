@@ -18,7 +18,7 @@ export const MyListCardItems = ({ items }) => {
       {items.map((i) => (
         <>
           <ListItem disablePadding key={i.id}>
-            <ListItemButton component={i.href && Link} to={i.href}>
+            <ListItemButton component={i.to && Link} to={i.to}>
               <ListItemText primary={i.value} />
             </ListItemButton>
           </ListItem>
@@ -34,7 +34,7 @@ MyListCardItems.propTypes = {
     PropTypes.shape({
       id: PropTypes.number,
       value: PropTypes.string.isRequired,
-      href: PropTypes.string,
+      to: PropTypes.string,
     })
   ).isRequired,
 };

@@ -1,6 +1,7 @@
 import React from 'react';
 import { Typography } from '@mui/material';
 import { MyRootContainer } from 'components/elements/MyRootContainer';
+import { MyButton } from 'components/elements/MyButton';
 import { MyCard, MyCardRecord } from 'components/elements/MyCard';
 import { MyListCard, MyListCardItems } from 'components/elements/MyListCard';
 import * as hooks from './index.hooks';
@@ -28,13 +29,12 @@ export const MyPage = () => {
           </MyCard>
           {spotItems && (
             <MyListCard>
-              <Typography
-                variant="h4"
-                component="h2"
-                sx={{ marginBottom: '0.5em', padding: '2rem 2rem 0' }}
-              >
-                登録したスポット
-              </Typography>
+              <styled.SpotHeader>
+                <Typography variant="h4" component="h2">
+                  登録したスポット
+                </Typography>
+                <MyButton to="/app/spots/create" caption="スポット登録" />
+              </styled.SpotHeader>
               {spotsError && (
                 <styled.ErrorMessage>
                   スポット情報を読み込めませんでした。
