@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { PropTypes } from 'prop-types';
 import { Wrapper } from '@googlemaps/react-wrapper';
 import { MyGoogleMapMarker } from './MyGoogleMapMarker';
-import { Map } from './index.styled';
+import * as styled from './index.styled';
 
 export const MyGoogleMap = ({ center, zoom, locations, onClickMarker }) => {
   const ref = useRef();
@@ -21,7 +21,7 @@ export const MyGoogleMap = ({ center, zoom, locations, onClickMarker }) => {
 
   return (
     <Wrapper apiKey={process.env.REACT_APP_GOOGLE_MAPS_API_KEY}>
-      <Map ref={ref}>
+      <styled.Map ref={ref}>
         {map &&
           locations &&
           locations.map((location) => (
@@ -32,7 +32,7 @@ export const MyGoogleMap = ({ center, zoom, locations, onClickMarker }) => {
               onClick={onClickMarker}
             />
           ))}
-      </Map>
+      </styled.Map>
     </Wrapper>
   );
 };

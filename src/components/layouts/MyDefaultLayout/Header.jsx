@@ -16,6 +16,7 @@ export const Header = ({ onClickSignOut }) => (
       <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
         <Logo to="/app">ReccomendLocation</Logo>
       </Typography>
+      <MyButton href="/app/mypage" caption="マイページ" />
       <MyButton onClick={onClickSignOut} caption="ログアウト" />
     </Toolbar>
   </AppBar>
