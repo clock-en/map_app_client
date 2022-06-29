@@ -7,7 +7,7 @@ export { MyListCardItems } from './MyListCardItems';
 export const MyListCard = ({ children }) => (
   <Paper
     sx={{
-      '& > *:first-child': { marginTop: '0' },
+      '& > *:first-of-type': { marginTop: '0' },
       '& > *:last-child': { marginBottom: '0' },
     }}
   >
@@ -16,5 +16,5 @@ export const MyListCard = ({ children }) => (
 );
 
 MyListCard.propTypes = {
-  children: PropTypes.element.isRequired,
+  children: PropTypes.node.isRequired,
 };

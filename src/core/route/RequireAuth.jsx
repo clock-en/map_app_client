@@ -12,5 +12,5 @@ export const RequireAuth = ({ children }) => {
 };
 
 RequireAuth.propTypes = {
-  children: PropTypes.element.isRequired,
+  children: PropTypes.node.isRequired,
 };
