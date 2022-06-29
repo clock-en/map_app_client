@@ -4,6 +4,7 @@ import { useMutate } from 'hooks/fetch';
 
 export const useView = () => {
   const [nameInput, setNameInput] = useState('');
+  const [descriptionInput, setDescriptionInput] = useState('');
   const [latInput, setLatInput] = useState('');
   const [lngInput, setLngInput] = useState('');
   const navigate = useNavigate();
@@ -11,6 +12,9 @@ export const useView = () => {
 
   const handleChangeName = (e) => {
     setNameInput(e.target.value);
+  };
+  const handleChangeDescription = (e) => {
+    setDescriptionInput(e.target.value);
   };
   const handleChangeLat = (e) => {
     setLatInput(e.target.value);
@@ -23,6 +27,7 @@ export const useView = () => {
     e.preventDefault();
     mutate({
       name: nameInput,
+      description: descriptionInput,
       latitude: latInput,
       longitude: lngInput,
     });
@@ -37,12 +42,14 @@ export const useView = () => {
 
   return {
     nameInput,
+    descriptionInput,
     latInput,
     lngInput,
     loading,
     error,
     inputErrors,
     handleChangeName,
+    handleChangeDescription,
     handleChangeLat,
     handleChangeLng,
     handleSubmit,

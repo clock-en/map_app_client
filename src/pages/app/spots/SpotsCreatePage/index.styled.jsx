@@ -9,6 +9,5 @@ export const LatLngField = styled('div')(() => ({
 }));
 
 export const Form = styled('form')(() => ({
-  '& > *:first-of-type': { marginTop: '0' },
   '& > *:last-child': { marginBottom: '0' },
 }));

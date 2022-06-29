@@ -7,7 +7,6 @@ export { MyListCardItems } from './MyListCardItems';
 export const MyListCard = ({ children }) => (
   <Paper
     sx={{
-      '& > *:first-of-type': { marginTop: '0' },
       '& > *:last-child': { marginBottom: '0' },
     }}
   >

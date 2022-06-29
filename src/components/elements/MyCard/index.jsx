@@ -9,7 +9,6 @@ export const MyCard = ({ children }) => (
     sx={{
       marginBottom: '2em',
       padding: '2em',
-      '& > *:first-of-type': { marginTop: '0' },
       '& > *:last-child': { marginBottom: '0' },
     }}
   >

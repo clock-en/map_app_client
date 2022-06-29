@@ -4,6 +4,7 @@ import { MyButton } from 'components/elements/MyButton';
 import { MyRootContainer } from 'components/elements/MyRootContainer';
 import { MyCard } from 'components/elements/MyCard';
 import { MyTextField } from 'components/elements/MyTextField';
+import { MyTextareaField } from 'components/elements/MyTextareaField';
 import * as hooks from './index.hooks';
 import * as styled from './index.styled';
 
@@ -50,7 +51,13 @@ export const SpotsCreatePage = () => {
               />
             </styled.LatLngField>
           </styled.LatLngWrapper>
-          <Box sx={{ marginBottom: '1em' }}>
+          <MyTextareaField
+            label="おすすめポイント"
+            value={view.descriptionInput}
+            onChange={view.handleChangeDescription}
+            error={view.inputErrors ? view.inputErrors.description : undefined}
+          />
+          <Box sx={{ marginBottom: '1em', textAlign: 'right' }}>
             <MyButton type="submit" caption="登録" loading={view.loading} />
           </Box>
         </styled.Form>

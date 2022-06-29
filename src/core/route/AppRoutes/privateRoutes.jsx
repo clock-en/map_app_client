@@ -4,6 +4,7 @@ import { MyDefaultLayoutContainer } from 'container/MyDefaultLayoutContainer';
 import { HomePage } from 'pages/app/HomePage';
 import { MyPage } from 'pages/app/MyPage';
 import { SpotsCreatePage } from 'pages/app/spots/SpotsCreatePage';
+import { SpotDetailPage } from 'pages/app/spots/SpotDetailPage';
 
 export const privateRoutes = [
   {
@@ -17,6 +18,7 @@ export const privateRoutes = [
       { path: '', element: <HomePage /> },
       { path: 'mypage', element: <MyPage /> },
       { path: 'spots/create', element: <SpotsCreatePage /> },
+      { path: 'spots/:id', element: <SpotDetailPage /> },
     ],
   },
 ];
