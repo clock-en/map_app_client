@@ -6,9 +6,8 @@ import * as hooks from './index.hooks';
 import * as styled from './index.styled';
 
 export const HomePage = () => {
-  const { locations, loading, selectedLocation, handleMarkerClick } =
-    hooks.useView();
-  if (loading) {
+  const view = hooks.useView();
+  if (view.loading) {
     return (
       <>
         <CircularProgress />
@@ -21,10 +20,12 @@ export const HomePage = () => {
       <MyGoogleMap
         center={{ lat: 35.68142354732969, lng: 139.76709261114823 }}
         zoom={15}
-        locations={locations}
-        onClickMarker={handleMarkerClick}
+        locations={view.locations}
+        onClickMarker={view.handleMarkerClick}
       />
-      {selectedLocation && <LocationDetailPanel location={selectedLocation} />}
+      {view.selectedLocation && (
+        <LocationDetailPanel location={view.selectedLocation} />
+      )}
     </styled.PageRoot>
   );
 };

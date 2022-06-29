@@ -36,9 +36,9 @@ export const useView = () => {
     if (spots) {
       setSpotItems(
         spots.map((spot) => ({
-          id: spot.id,
+          id: `spot-${spot.id}`,
           value: spot.name,
-          href: `/app/spots/${spot.id}`,
+          to: `/app/spots/${spot.id}`,
         }))
       );
     }

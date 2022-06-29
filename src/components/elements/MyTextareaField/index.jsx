@@ -2,12 +2,13 @@ import React from 'react';
 import { PropTypes } from 'prop-types';
 import { Box, TextField } from '@mui/material';
 
-export const MyTextField = ({ value, onChange, type, label, error }) => (
+export const MyTextareaField = ({ value, onChange, label, error, rows }) => (
   <Box sx={{ marginBottom: '1em' }}>
     <TextField
-      type={type}
       label={label}
       value={value}
+      multiline
+      rows={rows}
       onChange={onChange}
       error={error ? true : false}
       helperText={error}
@@ -17,16 +18,16 @@ export const MyTextField = ({ value, onChange, type, label, error }) => (
   </Box>
 );
 
-MyTextField.propTypes = {
+MyTextareaField.propTypes = {
   value: PropTypes.string.isRequired,
   onChange: PropTypes.func.isRequired,
-  type: PropTypes.string,
   label: PropTypes.string,
   error: PropTypes.string,
+  rows: PropTypes.number,
 };
 
-MyTextField.defaultProps = {
-  type: 'text',
+MyTextareaField.defaultProps = {
   label: undefined,
   error: undefined,
+  rows: 4,
 };

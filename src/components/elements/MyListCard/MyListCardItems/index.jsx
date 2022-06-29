@@ -2,6 +2,7 @@ import React from 'react';
 import { PropTypes } from 'prop-types';
 import { Link } from 'react-router-dom';
 import {
+  Box,
   List,
   ListItem,
   ListItemButton,
@@ -14,16 +15,16 @@ export const MyListCardItems = ({ items }) => {
     return null;
   }
   return (
-    <List>
+    <List disablePadding>
       {items.map((i) => (
-        <>
-          <ListItem disablePadding key={i.id}>
-            <ListItemButton component={i.href && Link} to={i.href}>
+        <Box key={i.id}>
+          <ListItem disablePadding>
+            <ListItemButton component={i.to && Link} to={i.to}>
               <ListItemText primary={i.value} />
             </ListItemButton>
           </ListItem>
           <Divider />
-        </>
+        </Box>
       ))}
     </List>
   );
@@ -32,9 +33,9 @@ export const MyListCardItems = ({ items }) => {
 MyListCardItems.propTypes = {
   items: PropTypes.arrayOf(
     PropTypes.shape({
-      id: PropTypes.number,
+      id: PropTypes.string,
       value: PropTypes.string.isRequired,
-      href: PropTypes.string,
+      to: PropTypes.string,
     })
   ).isRequired,
 };

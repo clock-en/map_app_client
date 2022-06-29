@@ -9,7 +9,6 @@ export const MyCard = ({ children }) => (
     sx={{
       marginBottom: '2em',
       padding: '2em',
-      '& > *:first-child': { marginTop: '0' },
       '& > *:last-child': { marginBottom: '0' },
     }}
   >
@@ -18,5 +17,5 @@ export const MyCard = ({ children }) => (
 );
 
 MyCard.propTypes = {
-  children: PropTypes.element.isRequired,
+  children: PropTypes.node.isRequired,
 };
