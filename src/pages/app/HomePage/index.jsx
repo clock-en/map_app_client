@@ -20,7 +20,7 @@ export const HomePage = () => {
       <MyGoogleMap
         center={{ lat: 35.68142354732969, lng: 139.76709261114823 }}
         zoom={15}
-        locations={view.locations}
+        locations={view.spots}
         onClickMarker={view.handleMarkerClick}
       />
       {view.selectedLocation && (

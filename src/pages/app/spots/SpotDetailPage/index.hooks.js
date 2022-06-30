@@ -5,22 +5,31 @@ import { useQuery } from 'hooks/fetch';
 export const useView = () => {
   const { id } = useParams();
   const {
-    data: location,
-    loading,
-    error,
-    inputErrors,
-    query,
+    data: spot,
+    loading: spotLaoding,
+    error: spotError,
+    query: spotQuery,
   } = useQuery(`/spots/${id}`);
+
+  const {
+    data: comments,
+    loading: commentsLaoding,
+    error: commentsError,
+    query: commentsQuery,
+  } = useQuery(`/comments`);
 
   // ログイン成功時の処理
   useEffect(() => {
-    query();
+    spotQuery();
+    commentsQuery({ spot_id: id });
   }, []);
 
   return {
-    location,
-    loading,
-    error,
-    inputErrors,
+    spot,
+    spotLaoding,
+    spotError,
+    comments,
+    commentsLaoding,
+    commentsError,
   };
 };

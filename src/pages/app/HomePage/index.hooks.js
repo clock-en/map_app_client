@@ -2,8 +2,8 @@ import { useState, useEffect } from 'react';
 import { useQuery } from 'hooks/fetch';
 
 export const useView = () => {
-  const { data: locations, loading, error, query } = useQuery('/spots');
-  const [selectedLocation, setSelectedLocation] = useState();
+  const { data: spots, loading, error, query } = useQuery('/spots');
+  const [selectedSpot, setSelectedSpot] = useState();
 
   useEffect(() => {
     query();
@@ -17,13 +17,13 @@ export const useView = () => {
   }, [error]);
 
   const handleMarkerClick = (location) => {
-    setSelectedLocation(location);
+    setSelectedSpot(location);
   };
 
   return {
-    locations,
+    spots,
     loading,
-    selectedLocation,
+    selectedSpot,
     handleMarkerClick,
   };
 };
