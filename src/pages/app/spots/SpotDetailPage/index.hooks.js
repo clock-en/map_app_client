@@ -1,26 +1,77 @@
-import { useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import { useQuery } from 'hooks/fetch';
+import { useMutate, useQuery } from 'hooks/fetch';
 
 export const useView = () => {
   const { id } = useParams();
+  const [commentInput, setCommentInput] = useState('');
+  const [commentList, setCommentList] = useState([]);
+
   const {
-    data: location,
-    loading,
-    error,
-    inputErrors,
-    query,
+    data: spot,
+    loading: spotLaoding,
+    error: spotError,
+    query: spotQuery,
   } = useQuery(`/spots/${id}`);
 
-  // ログイン成功時の処理
+  const {
+    data: comments,
+    loading: commentsLaoding,
+    error: commentsError,
+    query: commentsQuery,
+  } = useQuery('/comments');
+
+  const {
+    data: newComment,
+    loading: newCommentLaoding,
+    error: newCommentError,
+    inputErrors,
+    mutate: newCommentMutate,
+  } = useMutate('/comments');
+
   useEffect(() => {
-    query();
+    spotQuery();
+    commentsQuery({ spot_id: id });
   }, []);
 
+  useEffect(() => {
+    if (comments) {
+      setCommentList(comments);
+    }
+  }, [comments]);
+
+  useEffect(() => {
+    if (newComment) {
+      setCommentList([...commentList, newComment]);
+      setCommentInput('');
+    }
+  }, [newComment]);
+
+  const handleChangeComment = (e) => {
+    setCommentInput(e.target.value);
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    newCommentMutate({
+      spot_id: id,
+      comment: commentInput,
+    });
+  };
+
   return {
-    location,
-    loading,
-    error,
+    commentInput,
+    commentList,
+    spot,
+    spotLaoding,
+    spotError,
+    commentsLaoding,
+    commentsError,
+    newComment,
+    newCommentLaoding,
+    newCommentError,
     inputErrors,
+    handleChangeComment,
+    handleSubmit,
   };
 };
