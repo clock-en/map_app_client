@@ -1,11 +1,13 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Typography } from '@mui/material';
+import { Typography, Box } from '@mui/material';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import { MyRootContainer } from 'components/elements/MyRootContainer';
 import { MyLineBreakText } from 'components/elements/MyLineBreakText';
 import { MyGoogleMap } from 'container/MyGoogleMap';
 import { MyCard } from 'components/elements/MyCard';
+import { MyTextareaField } from 'components/elements/MyTextareaField';
+import { MyButton } from 'components/elements/MyButton';
 import { CommentList } from './CommentList';
 import * as hooks from './index.hooks';
 import * as styled from './index.styled';
@@ -57,7 +59,20 @@ export const SpotDetailPage = () => {
               >
                 コメント一覧
               </Typography>
-              <CommentList comments={view.comments} />
+              <CommentList comments={view.commentList} />
+              <form onSubmit={view.handleSubmit} noValidate>
+                <MyTextareaField
+                  label="コメントを入力"
+                  value={view.commentInput}
+                  onChange={view.handleChangeComment}
+                  error={
+                    view.inputErrors ? view.inputErrors.comment : undefined
+                  }
+                />
+                <Box sx={{ textAlign: 'right' }}>
+                  <MyButton type="submit" caption="コメントする" />
+                </Box>
+              </form>
             </MyCard>
           </>
         )}

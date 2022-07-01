@@ -17,14 +17,18 @@ export const HomePage = () => {
 
   return (
     <styled.PageRoot>
-      <MyGoogleMap
-        center={{ lat: 35.68142354732969, lng: 139.76709261114823 }}
-        zoom={15}
-        locations={view.spots}
-        onClickMarker={view.handleMarkerClick}
-      />
-      {view.selectedLocation && (
-        <LocationDetailPanel location={view.selectedLocation} />
+      {view.spots && (
+        <>
+          <MyGoogleMap
+            center={{ lat: 35.68142354732969, lng: 139.76709261114823 }}
+            zoom={15}
+            locations={view.spots}
+            onClickMarker={view.handleMarkerClick}
+          />
+          {view.selectedSpot && (
+            <LocationDetailPanel location={view.selectedSpot} />
+          )}
+        </>
       )}
     </styled.PageRoot>
   );
