@@ -7,6 +7,7 @@ export { MyListCardItems } from './MyListCardItems';
 export const MyListCard = ({ children }) => (
   <Paper
     sx={{
+      position: 'relative',
       '& > *:last-child': { marginBottom: '0' },
     }}
   >
