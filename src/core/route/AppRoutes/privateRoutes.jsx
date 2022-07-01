@@ -5,6 +5,7 @@ import { HomePage } from 'pages/app/HomePage';
 import { MyPage } from 'pages/app/MyPage';
 import { SpotsCreatePage } from 'pages/app/spots/SpotsCreatePage';
 import { SpotDetailPage } from 'pages/app/spots/SpotDetailPage';
+import { ProfilePage } from 'pages/app/settings/ProfilePage';
 
 export const privateRoutes = [
   {
@@ -19,6 +20,7 @@ export const privateRoutes = [
       { path: 'mypage', element: <MyPage /> },
       { path: 'spots/create', element: <SpotsCreatePage /> },
       { path: 'spots/:id', element: <SpotDetailPage /> },
+      { path: 'settings/profile', element: <ProfilePage /> },
     ],
   },
 ];

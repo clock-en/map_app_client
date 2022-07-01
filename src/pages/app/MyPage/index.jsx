@@ -1,5 +1,5 @@
 import React from 'react';
-import { Typography } from '@mui/material';
+import { Typography, Box } from '@mui/material';
 import { MyRootContainer } from 'components/elements/MyRootContainer';
 import { MyButton } from 'components/elements/MyButton';
 import { MyCard, MyCardRecord } from 'components/elements/MyCard';
@@ -26,6 +26,12 @@ export const MyPage = () => {
             </Typography>
             <MyCardRecord name="ユーザー名" value={view.user.name} />
             <MyCardRecord name="メールアドレス" value={view.user.email} />
+            <Box sx={{ textAlign: 'right' }}>
+              <MyButton
+                to="/app/settings/profile"
+                caption="アカウント情報修正"
+              />
+            </Box>
           </MyCard>
           {view.spotItems && (
             <MyListCard>
