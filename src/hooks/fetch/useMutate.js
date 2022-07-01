@@ -1,12 +1,12 @@
 import { useFetch } from './useFetch';
 
-export const useMutate = (resourcePath) => {
+export const useMutate = (resourcePath, method = 'POST') => {
   const { doFetch, ...rest } = useFetch(resourcePath);
 
   const mutate = (body) => {
     const token = localStorage.getItem('identified_token');
     doFetch({
-      method: 'POST',
+      method,
       headers: {
         'Content-Type': 'application/json',
         'x-token': token,

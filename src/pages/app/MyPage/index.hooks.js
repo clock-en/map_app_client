@@ -10,6 +10,7 @@ export const useView = () => {
   } = useQuery('/users/me');
   const {
     data: spots,
+    loading: spotsLoading,
     error: spotsError,
     query: spotsQuery,
   } = useQuery('/spots');
@@ -46,8 +47,9 @@ export const useView = () => {
 
   return {
     user,
-    spotItems,
-    spotsError,
     userLoading,
+    spotItems,
+    spotsLoading,
+    spotsError,
   };
 };

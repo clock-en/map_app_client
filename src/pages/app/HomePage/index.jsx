@@ -1,5 +1,5 @@
 import React from 'react';
-import { CircularProgress } from '@mui/material';
+import { MyLoadingLayer } from 'components/elements/MyLoadingLayer';
 import { MyGoogleMap } from 'container/MyGoogleMap';
 import { LocationDetailPanel } from './LocationDetailPanel';
 import * as hooks from './index.hooks';
@@ -7,14 +7,6 @@ import * as styled from './index.styled';
 
 export const HomePage = () => {
   const view = hooks.useView();
-  if (view.loading) {
-    return (
-      <>
-        <CircularProgress />
-      </>
-    );
-  }
-
   return (
     <styled.PageRoot>
       {view.spots && (
@@ -30,6 +22,7 @@ export const HomePage = () => {
           )}
         </>
       )}
+      <MyLoadingLayer loading={view.loading} dependsParent />
     </styled.PageRoot>
   );
 };

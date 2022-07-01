@@ -7,6 +7,7 @@ export { MyCardRecord } from './MyCardRecord';
 export const MyCard = ({ children }) => (
   <Paper
     sx={{
+      position: 'relative',
       marginBottom: '2em',
       padding: '2em',
       '& > *:last-child': { marginBottom: '0' },
