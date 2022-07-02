@@ -1,5 +1,6 @@
 import React from 'react';
 import { Typography, Box, FormHelperText } from '@mui/material';
+import { MyLoadingLayer } from 'components/elements/MyLoadingLayer';
 import { MyButton } from 'components/elements/MyButton';
 import { MyRootContainer } from 'components/elements/MyRootContainer';
 import { MyCard } from 'components/elements/MyCard';
@@ -17,6 +18,16 @@ export const SpotEditPage = () => {
       </Typography>
       <MyCard>
         <styled.Form onSubmit={view.handleSubmit} noValidate>
+          {view.modifyError && (
+            <FormHelperText error sx={{ marginBottom: '1em' }}>
+              {view.modifyError.message}
+            </FormHelperText>
+          )}
+          {view.modifiedData && (
+            <FormHelperText sx={{ marginBottom: '1em', color: 'green' }}>
+              変更が完了しました
+            </FormHelperText>
+          )}
           <MyTextField
             type="text"
             label="スポット名"
@@ -25,11 +36,6 @@ export const SpotEditPage = () => {
             error={view.inputErrors ? view.inputErrors.name : undefined}
           />
           <styled.LatLngWrapper>
-            {view.inputErrors && view.inputErrors.location && (
-              <FormHelperText error sx={{ marginBottom: '1em' }}>
-                {view.inputErrors.location}
-              </FormHelperText>
-            )}
             <styled.LatLngField>
               <MyTextField
                 type="text"
@@ -51,6 +57,11 @@ export const SpotEditPage = () => {
               />
             </styled.LatLngField>
           </styled.LatLngWrapper>
+          {view.inputErrors && view.inputErrors.location && (
+            <FormHelperText error sx={{ marginBottom: '1em' }}>
+              {view.inputErrors.location}
+            </FormHelperText>
+          )}
           <MyTextareaField
             label="おすすめポイント"
             value={view.descriptionInput}
@@ -58,8 +69,13 @@ export const SpotEditPage = () => {
             error={view.inputErrors ? view.inputErrors.description : undefined}
           />
           <Box sx={{ marginBottom: '1em', textAlign: 'right' }}>
-            <MyButton type="submit" caption="登録" loading={view.loading} />
+            <MyButton
+              type="submit"
+              caption="登録"
+              loading={view.modifyLoading}
+            />
           </Box>
+          <MyLoadingLayer loading={view.spotLaoding} dependsParent />
         </styled.Form>
       </MyCard>
     </MyRootContainer>

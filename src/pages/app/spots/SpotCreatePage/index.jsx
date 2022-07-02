@@ -25,11 +25,6 @@ export const SpotCreatePage = () => {
             error={view.inputErrors ? view.inputErrors.name : undefined}
           />
           <styled.LatLngWrapper>
-            {view.inputErrors && view.inputErrors.location && (
-              <FormHelperText error sx={{ marginBottom: '1em' }}>
-                {view.inputErrors.location}
-              </FormHelperText>
-            )}
             <styled.LatLngField>
               <MyTextField
                 type="text"
@@ -51,6 +46,11 @@ export const SpotCreatePage = () => {
               />
             </styled.LatLngField>
           </styled.LatLngWrapper>
+          {view.inputErrors && view.inputErrors.location && (
+            <FormHelperText error sx={{ marginBottom: '1em' }}>
+              {view.inputErrors.location}
+            </FormHelperText>
+          )}
           <MyTextareaField
             label="おすすめポイント"
             value={view.descriptionInput}
