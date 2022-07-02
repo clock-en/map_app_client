@@ -1,4 +1,7 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
+import Fab from '@mui/material/Fab';
+import AddIcon from '@mui/icons-material/Add';
 import { MyLoadingLayer } from 'components/elements/MyLoadingLayer';
 import { MyGoogleMap } from 'container/MyGoogleMap';
 import { LocationDetailPanel } from './LocationDetailPanel';
@@ -20,6 +23,17 @@ export const HomePage = () => {
           {view.selectedSpot && (
             <LocationDetailPanel location={view.selectedSpot} />
           )}
+          <styled.AdditionalButton>
+            <Fab
+              component={Link}
+              to="/app/spots/create"
+              color="primary"
+              aria-label="add"
+              title="スポットを登録"
+            >
+              <AddIcon />
+            </Fab>
+          </styled.AdditionalButton>
         </>
       )}
       <MyLoadingLayer loading={view.loading} dependsParent />

@@ -5,3 +5,10 @@ export const PageRoot = styled('div')(() => ({
   height: '100%',
   position: 'relative',
 }));
+
+export const AdditionalButton = styled('div')(() => ({
+  position: 'absolute',
+  top: '50%',
+  right: '1em',
+  transform: 'translate(0, -50%)',
+}));
