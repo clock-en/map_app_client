@@ -70,7 +70,7 @@ export const SpotDetailPage = () => {
           </MyCard>
         </>
       )}
-      <MyLoadingLayer loading={view.spotsLoading} dependsParent />
+      <MyLoadingLayer loading={view.spotLaoding} dependsParent />
     </MyRootContainer>
   );
 };
