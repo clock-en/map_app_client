@@ -78,6 +78,7 @@ export const SpotEditPage = () => {
               type="submit"
               caption="登録"
               loading={view.modifyLoading}
+              disabled={view.modifyLoading}
             />
           </Box>
           <MyLoadingLayer loading={view.spotLaoding} dependsParent />

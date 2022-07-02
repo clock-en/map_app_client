@@ -64,6 +64,7 @@ export const SpotDetailPage = () => {
                   type="submit"
                   caption="コメントする"
                   loading={view.newCommentLaoding}
+                  disabled={view.newCommentLaoding}
                 />
               </Box>
             </form>

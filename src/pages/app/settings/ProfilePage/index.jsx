@@ -51,6 +51,7 @@ export const ProfilePage = () => {
               type="submit"
               caption="保存"
               loading={view.modifyLoading}
+              disabled={view.modifyLoading}
             />
           </Box>
           <MyLoadingLayer loading={view.userLoading} dependsParent />

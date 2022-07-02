@@ -43,7 +43,12 @@ export const SignUpPage = () => {
             error={view.inputErrors ? view.inputErrors.password : undefined}
           />
           <Box sx={{ marginBottom: '1em' }}>
-            <MyButton type="submit" caption="新規登録" loading={view.loading} />
+            <MyButton
+              type="submit"
+              caption="新規登録"
+              loading={view.loading}
+              disabled={view.loading}
+            />
           </Box>
           <Box>
             <Link to="/auth/signin">アカウントお持ちの方</Link>
