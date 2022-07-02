@@ -22,7 +22,7 @@ export const useView = () => {
 
   useEffect(() => {
     if (user) {
-      spotsQuery({ user_id: user.id });
+      spotsQuery({ is_own: true });
     }
   }, [user]);
 
