@@ -8,7 +8,7 @@ import { MyTextareaField } from 'components/elements/MyTextareaField';
 import * as hooks from './index.hooks';
 import * as styled from './index.styled';
 
-export const SpotsCreatePage = () => {
+export const SpotCreatePage = () => {
   const view = hooks.useView();
   return (
     <MyRootContainer>

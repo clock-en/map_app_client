@@ -39,7 +39,7 @@ export const useView = () => {
         spots.map((spot) => ({
           id: `spot-${spot.id}`,
           value: spot.name,
-          to: `/app/spots/${spot.id}`,
+          to: `/app/spots/edit/${spot.id}`,
         }))
       );
     }
