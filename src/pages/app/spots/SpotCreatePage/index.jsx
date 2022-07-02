@@ -8,7 +8,7 @@ import { MyTextareaField } from 'components/elements/MyTextareaField';
 import * as hooks from './index.hooks';
 import * as styled from './index.styled';
 
-export const SpotsCreatePage = () => {
+export const SpotCreatePage = () => {
   const view = hooks.useView();
   return (
     <MyRootContainer>
@@ -25,11 +25,6 @@ export const SpotsCreatePage = () => {
             error={view.inputErrors ? view.inputErrors.name : undefined}
           />
           <styled.LatLngWrapper>
-            {view.inputErrors && view.inputErrors.location && (
-              <FormHelperText error sx={{ marginBottom: '1em' }}>
-                {view.inputErrors.location}
-              </FormHelperText>
-            )}
             <styled.LatLngField>
               <MyTextField
                 type="text"
@@ -51,6 +46,11 @@ export const SpotsCreatePage = () => {
               />
             </styled.LatLngField>
           </styled.LatLngWrapper>
+          {view.inputErrors && view.inputErrors.location && (
+            <FormHelperText error sx={{ marginBottom: '1em' }}>
+              {view.inputErrors.location}
+            </FormHelperText>
+          )}
           <MyTextareaField
             label="おすすめポイント"
             value={view.descriptionInput}
