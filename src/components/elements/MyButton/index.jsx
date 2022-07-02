@@ -12,7 +12,7 @@ export const MyButton = ({ caption, type, to, loading, onClick, disabled }) => (
     onClick={onClick}
     disabled={disabled}
   >
-    {loading ? <CircularProgress size="1.75em" /> : caption}
+    {loading ? <CircularProgress size="1.75em" color="inherit" /> : caption}
   </Button>
 );
 
