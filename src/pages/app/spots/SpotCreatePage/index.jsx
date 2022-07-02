@@ -58,7 +58,12 @@ export const SpotCreatePage = () => {
             error={view.inputErrors ? view.inputErrors.description : undefined}
           />
           <Box sx={{ marginBottom: '1em', textAlign: 'right' }}>
-            <MyButton type="submit" caption="登録" loading={view.loading} />
+            <MyButton
+              type="submit"
+              caption="登録"
+              loading={view.loading}
+              disabled={view.loading}
+            />
           </Box>
         </styled.Form>
       </MyCard>

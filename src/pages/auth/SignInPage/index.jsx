@@ -42,6 +42,7 @@ export const SignInPage = () => {
               type="submit"
               caption="サインイン"
               loading={view.loading}
+              disabled={view.loading}
             />
           </Box>
           <Box>

@@ -23,7 +23,7 @@ export const useView = () => {
 
   const {
     data: newComment,
-    loading: newCommentLaoding,
+    loading: newCommentLoading,
     inputErrors,
     mutate: newCommentMutate,
   } = useMutate('/comments');
@@ -66,7 +66,7 @@ export const useView = () => {
     spotError,
     commentsLaoding,
     commentsError,
-    newCommentLaoding,
+    newCommentLoading,
     inputErrors,
     handleChangeComment,
     handleSubmit,

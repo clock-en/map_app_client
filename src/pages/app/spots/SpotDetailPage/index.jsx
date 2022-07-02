@@ -64,13 +64,14 @@ export const SpotDetailPage = () => {
                   type="submit"
                   caption="コメントする"
                   loading={view.newCommentLaoding}
+                  disabled={view.newCommentLaoding}
                 />
               </Box>
             </form>
           </MyCard>
         </>
       )}
-      <MyLoadingLayer loading={view.spotsLoading} dependsParent />
+      <MyLoadingLayer loading={view.spotLaoding} dependsParent />
     </MyRootContainer>
   );
 };
