@@ -1,5 +1,7 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { Typography, Box, FormHelperText } from '@mui/material';
+import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import { MyLoadingLayer } from 'components/elements/MyLoadingLayer';
 import { MyButton } from 'components/elements/MyButton';
 import { MyRootContainer } from 'components/elements/MyRootContainer';
@@ -14,6 +16,9 @@ export const SpotEditPage = () => {
   return (
     <MyRootContainer>
       <Typography variant="h2" component="h1" sx={{ marginBottom: '0.5em' }}>
+        <Link to="/app/mypage">
+          <ArrowBackIcon fontSize="inherit" />
+        </Link>
         スポット編集
       </Typography>
       <MyCard>
